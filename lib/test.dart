@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../provider/api_providers.dart';
-import '../../provider/ui_providers.dart';
+import 'provider/ui_providers.dart';
+import 'test_provider.dart';
 
-class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+class TestPage extends ConsumerWidget {
+  const TestPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final photosAsyncValue = ref.watch(unsplashPhotosProvider);
+    final unsplashPhotosAsyncValue = ref.watch(unsplashPhotosProvider);
     return Scaffold(
-        body: photosAsyncValue.when(
+      body: unsplashPhotosAsyncValue.when(
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (error, stackTrace) => Center(child: Text('Error: $error')),
           data: (photos) {
@@ -23,7 +23,9 @@ class HomePage extends ConsumerWidget {
               gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2
               ),
-              itemBuilder: (context,index) => Padding(
+              itemBuilder: (context,index) {
+                final photo = photos[index];
+                return Padding(
                 padding: const EdgeInsets.all(5),
                 child: SizedBox(
                   child: Column(
@@ -31,7 +33,7 @@ class HomePage extends ConsumerWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(25),
                         child: Image.network(
-                          photos[index]['urls']['regular'],
+                          photo.photoUrl,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -39,7 +41,7 @@ class HomePage extends ConsumerWidget {
                       GestureDetector(
                         onTap: () async {
                           final uiService = ref.watch(uiServiceProvider); 
-                          uiService.displayDetails(context, photos[index]['user']['username']);
+                          uiService.displayDetails(context, photo.photographerUsername);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -66,11 +68,11 @@ class HomePage extends ConsumerWidget {
                     ],
                   ),
                 ),
-              ), 
+              );
+              } 
             );
           },
-        ),
-      );
+        )
+    );
   }
 }
-

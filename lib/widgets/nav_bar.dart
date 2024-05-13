@@ -12,12 +12,12 @@ import '../screens/navigation/search_page.dart';
 class NavBar extends ConsumerWidget {
   const NavBar({super.key});
 
-  static List<Widget> _widgetOptions = <Widget>[
-     HomePage(),
+  static final List<Widget> _widgetOptions = <Widget>[
+     const HomePage(),
      SearchPage(),
-     CreatePage(),
-     InboxPage(),
-     ProfilePage()
+     const CreatePage(),
+     const InboxPage(),
+     const ProfilePage()
   ];
 
   @override

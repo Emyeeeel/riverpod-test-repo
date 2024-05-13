@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:test_repo/test.dart';
 import 'package:test_repo/widgets/bottom_nav.dart';
 
 import 'widgets/nav_bar.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavBar(),
+      home: TestPage(),
     );
   }
 }
