@@ -5,3 +5,4 @@ final bottomNavigationProvider = StateNotifierProvider<BottomNavigationService, 
   return BottomNavigationService();
 });
 
+final uiServiceProvider = Provider((ref) => PhotoDetails());
