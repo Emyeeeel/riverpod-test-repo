@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_repo/test.dart';
 import 'package:test_repo/widgets/bottom_nav.dart';
 
+import 'sign.dart';
 import 'widgets/nav_bar.dart';
 
 void main() {
@@ -13,9 +14,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TestPage(),
+      home: NavigatorWidget()
     );
   }
 }
