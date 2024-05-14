@@ -3,24 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'provider/ui_providers.dart';
+import 'sign_provider.dart';
 // ignore: must_be_immutable
 class NavigatorWidget extends ConsumerWidget {
   NavigatorWidget({Key? key}) : super(key: key);
 
-  TextEditingController _emailController = TextEditingController();
+  // static final List<Widget> _widgetOptions = <Widget>[
+  //    const HomePage(),
+  //    SearchPage(),
+  //    const CreatePage(),
+  //    const InboxPage(),
+  //    const ProfilePage()
+  // ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(bottomNavigationProvider);
+    final textEditingController = ref.watch(textEditingControllerProvider);
+    final stringValue = ref.watch(stringValueProvider);
     return Scaffold(
       body: Column(
         children: [
+          const Spacer(),
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 80,
             child: Row(
               children: [
-                Icon(Icons.arrow_back_ios_new_rounded),
+                const Icon(Icons.arrow_back_ios_new_rounded),
                 const Spacer(),
                 Row(
                   children: List.generate(
@@ -48,7 +58,10 @@ class NavigatorWidget extends ConsumerWidget {
             width: MediaQuery.of(context).size.width - 40,
             height: 50,
             child: CupertinoTextField(
-                controller: _emailController,
+                controller: textEditingController, 
+                onChanged: (value){
+                  ref.read(stringValueProvider.notifier).state = value;
+                },
                 padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                 placeholder: 'Enter your email',
                 placeholderStyle: const TextStyle(color: Color(0xFF8E8E8E)),
@@ -60,22 +73,24 @@ class NavigatorWidget extends ConsumerWidget {
           ),
           const Spacer(),
           MaterialButton( 
-            onPressed: null,
-            // (){
-            //   final nextIndex = selectedIndex + 1;
-            //   ref.read(bottomNavigationProvider.notifier).setSelectedIndex(nextIndex);
-            // }, 
+            onPressed: stringValue.isEmpty ? null :() {
+              final nextIndex = selectedIndex + 1;
+              ref.read(bottomNavigationProvider.notifier).setSelectedIndex(nextIndex);
+            },
+            color: stringValue.isEmpty ? null : Colors.red,
             disabledColor: const Color(0xFFE0E0E0),
             minWidth: MediaQuery.of(context).size.width - 40,
             height: 50,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
             ),
-            child: const Text(
+            child: Text(
               'Next',
-              style: TextStyle(color: Colors.black, fontSize: 18),
+              style: TextStyle(color: stringValue.isEmpty ? Colors.black : Colors.white, fontSize: 18),
             ),
           ),
+          Text(stringValue),
+          const Spacer(),
         ],
       ),
     );
