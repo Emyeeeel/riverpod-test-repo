@@ -33,35 +33,38 @@ class SignUpNavigation extends ConsumerWidget {
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 80,
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    final prevIndex = selectedIndex - 1;
-                    if (prevIndex < 0) {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingPage()));
-                    }
-                    else{
-                      ref.read(bottomNavigationProvider.notifier).setSelectedIndex(prevIndex);
-                    }
-                  },
-                  child: const Icon(Icons.arrow_back_ios_new_rounded),
-                ),
-                const Spacer(),
-                Row(
-                  children: List.generate(
-                    7,
-                    (index) => Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Icon(
-                        ((index < selectedIndex) || (index == selectedIndex)) ? Icons.circle : Icons.circle_outlined,
-                        size: 10,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20,0,20,0),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      final prevIndex = selectedIndex - 1;
+                      if (prevIndex < 0) {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingPage()));
+                      }
+                      else{
+                        ref.read(bottomNavigationProvider.notifier).setSelectedIndex(prevIndex);
+                      }
+                    },
+                    child: const Icon(Icons.arrow_back_ios_new_rounded),
+                  ),
+                  const Spacer(),
+                  Row(
+                    children: List.generate(
+                      7,
+                      (index) => Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Icon(
+                          ((index < selectedIndex) || (index == selectedIndex)) ? Icons.circle : Icons.circle_outlined,
+                          size: 10,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const Spacer(),
-              ],
+                  const Spacer(),
+                ],
+              ),
             ),
           ),
           _widgetOptions.elementAt(selectedIndex),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_repo/screens/log_in.dart';
 
 import 'sign_up/sign_up.dart';
 
@@ -28,7 +29,7 @@ class LandingPage extends StatelessWidget {
             SizedBox(height: 50,),
             MaterialButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpNavigation()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LogInPage()));
               },
               minWidth: MediaQuery.of(context).size.width - 40,
               height: 50,
