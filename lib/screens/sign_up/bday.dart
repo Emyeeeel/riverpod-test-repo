@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'sign_provider.dart';
+import '../../provider/sign_provider.dart';
 
 class BirthdayPage extends ConsumerWidget {
   const BirthdayPage({super.key});

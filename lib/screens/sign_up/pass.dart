@@ -1,21 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'sign_provider.dart';
+import '../../provider/sign_provider.dart';
 
 // ignore: must_be_immutable
-class EmailPage extends ConsumerWidget {
+class PasswordPage extends ConsumerWidget {
 
-  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController passTextEditingController = TextEditingController();
 
-  EmailPage({super.key});
-  
+  PasswordPage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     return Column(
       children: [
         const Text(
-          'What\'s your email?', 
+          'Create a password', 
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
         ),
@@ -23,12 +24,13 @@ class EmailPage extends ConsumerWidget {
           width: MediaQuery.of(context).size.width - 40,
           height: 50,
           child: CupertinoTextField(
-              controller: emailTextEditingController, 
+            obscureText: true,
+              controller: passTextEditingController, 
               onChanged: (value){
-                ref.read(emailStringValueProvider.notifier).state = value;
+                ref.read(passStringValueProvider.notifier).state = value;
               },
               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-              placeholder: 'Enter your email address',
+              placeholder: 'Enter your password',
               placeholderStyle: const TextStyle(color: Color(0xFF8E8E8E)),
               decoration: BoxDecoration(
                 border: Border.all(width: 2, color: CupertinoColors.black),

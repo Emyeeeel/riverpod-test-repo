@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:test_repo/screens/navigation/home_page.dart';
+import 'package:test_repo/screens/main_screens/home_page.dart';
 
 import '../provider/ui_providers.dart';
-import '../screens/navigation/create_page.dart';
-import '../screens/navigation/inbox_page.dart';
-import '../screens/navigation/profile_page.dart';
-import '../screens/navigation/search_page.dart';
+import '../screens/main_screens/create_page.dart';
+import '../screens/main_screens/inbox_page.dart';
+import '../screens/main_screens/profile_page.dart';
+import '../screens/main_screens/search_page.dart';
 
 
 class NavBar extends ConsumerWidget {

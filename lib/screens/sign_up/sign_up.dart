@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../landing.dart';
 import 'bday.dart';
 import 'email.dart';
 import 'name.dart';
 import 'pass.dart';
-import 'provider/ui_providers.dart';
-import 'sign_provider.dart';
+import '../../provider/ui_providers.dart';
+import '../../provider/sign_provider.dart';
 
 class SignUpNavigation extends ConsumerWidget {
   SignUpNavigation({Key? key}) : super(key: key);
@@ -37,7 +38,12 @@ class SignUpNavigation extends ConsumerWidget {
                 GestureDetector(
                   onTap: () {
                     final prevIndex = selectedIndex - 1;
-                    ref.read(bottomNavigationProvider.notifier).setSelectedIndex(prevIndex);
+                    if (prevIndex < 0) {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingPage()));
+                    }
+                    else{
+                      ref.read(bottomNavigationProvider.notifier).setSelectedIndex(prevIndex);
+                    }
                   },
                   child: const Icon(Icons.arrow_back_ios_new_rounded),
                 ),

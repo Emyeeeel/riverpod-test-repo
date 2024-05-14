@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'sign_provider.dart';
+import '../../provider/sign_provider.dart';
 
 // ignore: must_be_immutable
 class NamePage extends ConsumerWidget {

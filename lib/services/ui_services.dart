@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:riverpod/riverpod.dart';
 
-import '../style.dart';
+import '../styles/style.dart';
 
 class BottomNavigationService extends StateNotifier<int> {
   BottomNavigationService() : super(0);

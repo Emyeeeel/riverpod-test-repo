@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_repo/test.dart';
 import 'package:test_repo/widgets/bottom_nav.dart';
 
-import 'pass.dart';
-import 'sign.dart';
+import 'screens/sign_up/pass.dart';
+import 'screens/sign_up/sign_up.dart';
 import 'widgets/nav_bar.dart';
 
 void main() {
