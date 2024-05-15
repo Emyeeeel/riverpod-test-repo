@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_repo/test.dart';
 import 'package:test_repo/widgets/bottom_nav.dart';
 
-import 'screens/sign_up/pass.dart';
+import 'screens/main_screens/home_page.dart';
 import 'screens/sign_up/sign_up.dart';
 import 'widgets/nav_bar.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUpNavigation()
+      home: NavBar()
     );
   }
 }

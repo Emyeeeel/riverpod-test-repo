@@ -6,7 +6,7 @@ class AppStyle{
   static const colorRed = Color(0xFFE70125);
   static const colorWhite = Color(0xFFFFFFFF);
   static const isActive = Color(0xFF121212);
-  static const isInactive = Color(0xFF777777);
+  static const isInactive = Color(0xFFEFEFEF);
 
   static const TextStyle bottomNavBarText = TextStyle(
     fontFamily: 'Inter',
